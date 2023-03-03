@@ -9,6 +9,10 @@ const App = () => {
     /*const [seats, setSeats] = useState("100"); // 참가가능 인원수*/
     const [ugseats, setUgSeats] = useState(60);
     const [pgseats, setPgSeats] = useState(40);
+
+    // 과정 등록한 학생 정보를 저장하는 변수 선언
+    const [studDetails, setStudDetails] = useState({}); //{} 복수라서
+
     const handleChange = (e) => {
         setProgram(e.target.value);
     };
@@ -37,8 +41,9 @@ const App = () => {
             </div>
         <EnrollmentForm chosenProgram={program}
             currentSeat={(program === 'UG') ? ugseats :pgseats  }
-                        setUpdateSeats={setUpdateSeats}/>
-            <EnrolList />
+                        setUpdateSeats={setUpdateSeats}
+                        setStudDetails={setStudDetails} />
+            <EnrolList studDetails={studDetails}  setStudDetails={setStudDetails}/>
         </div>
     );
 };
