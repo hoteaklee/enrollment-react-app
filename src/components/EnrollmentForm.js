@@ -3,19 +3,25 @@ import { useState } from 'react';
 import '../App.css';
 
 const EnrollmentForm = () => {
+    // 폼에 입력한 이름/성을 기억히기 위해서 state형 변수 선언
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    // state형 변수에 저장된 이름/성을 환영메세지로 출력하기 위해 선언
     const [welcomeMessage, setWelcomeMessage] = useState("");
 
+    // 등록하기 버튼 클릭시 이름/성을 환영메세지로 만들어
+    // 폼 아래쪽에 나타냄
     const handleSubmit = (e) => {
         setWelcomeMessage(`환영합니다. ${firstName} ${lastName}`);
-        e.preventDefault();  //submit 기능 중지
+        e.preventDefault();  //submit 기능 전파 중지
     };
     return(
         <div>
             <form className="enrolForm" onSubmit={handleSubmit}>
         <h1>대학생 상세 정보 등록 양식</h1>
                 <div><label>First Name</label>
+                    {/* onblur 이벤트 발생시 입력한  이름/성은
+                    firstName, ladtName변수에 저장 */}
                 <input type="text" name="fname"
                 onBlur={(e)=>setFirstName(e.target.value)}/></div>
 
